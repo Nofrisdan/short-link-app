@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import "../app.css";
+
 export default function InputShortener() {
   return (
     <Fragment>
