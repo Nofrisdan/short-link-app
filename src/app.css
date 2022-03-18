@@ -50,6 +50,15 @@
   cursor: pointer;
 }
 
+/* copy */
+.copy {
+  font-family: "Oswald", sans-serif;
+  font-family: "Playfair Display", serif;
+  color: var(--primary-color);
+  text-shadow: 0px 1px rgb(15, 15, 15);
+  font-weight: bold;
+}
+
 /* background animate */
 @keyframes animate {
   0% {
@@ -74,6 +83,7 @@
   padding: 0;
   background: #4e54c8;
   overflow: hidden;
+  z-index: -1;
 }
 .background li {
   position: absolute;

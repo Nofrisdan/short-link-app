@@ -1,7 +1,7 @@
 import React from "react";
 
 function Copyright() {
-  return <div className="copy"></div>;
+  return <span className="copy">Copyright Cakdunsite.com</span>;
 }
 
 export default Copyright;
