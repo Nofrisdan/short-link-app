@@ -207,4 +207,10 @@
   color: #fff;
   cursor: pointer;
   background: var(--primary-color);
+  border: none;
+}
+
+.result button.copy {
+  background: #fff;
+  color: var(--primary-color);
 }
