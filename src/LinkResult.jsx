@@ -1,17 +1,40 @@
-import { useState, useEffect } from "react";
+import axios from "axios";
+import { useState, useEffect, Fragment } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import Swal from "sweetalert2";
-function LinkResult() {
-  const [result, setResult] = useState("https://url.cakdunsite/hyagsh");
+
+function LinkResult({ inputValue }) {
+  const [result, setResult] = useState("");
   const [copy, setCopy] = useState(false);
+
+  const fetchApi = async () => {
+    const api = "https://api.shrtco.de/v2/shorten?url=";
+    const result = await axios.get(api + inputValue);
+    const { short_link } = result.data.result;
+
+    setResult(short_link);
+  };
+
+  useEffect(() => {
+    if (inputValue.length) {
+      fetchApi();
+    }
+  });
 
   return (
     <div className="result">
-      <p>{result}</p>
+      <>
+        {result !== "" ? (
+          <Fragment>
+            <p>{result}</p>
 
-      <CopyToClipboard text={result} onCopy={() => setCopy(true)}>
-        <button className={copy ? "copy" : ""}>Copy To Clipboard</button>
-      </CopyToClipboard>
+            <CopyToClipboard text={result} onCopy={() => setCopy(true)}>
+              <button className={copy ? "copy" : ""}>Copy To Clipboard</button>
+            </CopyToClipboard>
+          </Fragment>
+        ) : (
+          ""
+        )}
+      </>
     </div>
   );
 }
